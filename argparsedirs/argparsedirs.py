@@ -1,4 +1,5 @@
 import os
+import argparse
 
 
 class ReadableDir(argparse.Action):
@@ -14,7 +15,7 @@ class ReadableDir(argparse.Action):
 class WriteableDir(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         if not os.path.isdir(values):
-            raise argparse.ArgumentTypeError(f"WriteableDir: {values} is not a valid path".)
+            raise argparse.ArgumentTypeError(f"WriteableDir: {values} is not a valid path")
         if os.access(values, os.W_OK):
             setattr(namespace, self.dest, values)
         else:
