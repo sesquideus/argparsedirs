@@ -3,7 +3,7 @@ import setuptools
 
 setup_args = dict(
     name='argparsedirs',
-    version='0.0.5',
+    version='0.1.0',
     description='Readable and Writeable dir type for argparse',
     license='MIT',
     packages=setuptools.find_packages(),
@@ -11,7 +11,7 @@ setup_args = dict(
     author_email='martin.balaz@trojsten.sk',
     keywords=['argparse', 'directories'],
     url='https://github.com/sesquideus/argparsedirs',
-    download_url='https://pypi.org/project/argparser/',
+    download_url='https://pypi.org/project/argparsedirs/',
     include_package_data=True,
 )
 

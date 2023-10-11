@@ -1,3 +1,3 @@
 from .argparsedirs import ReadableDir, WriteableDir
 
-__all__ = ['argparsedirs']
+__all__ = ['argparsedirs', 'ReadableDir', 'WriteableDir']
