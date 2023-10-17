@@ -1,4 +1,5 @@
 import os
+import pathlib
 import argparse
 
 
@@ -20,3 +21,26 @@ class WriteableDir(argparse.Action):
             setattr(namespace, self.dest, values)
         else:
             raise argparse.ArgumentTypeError(f"WriteableDir: {values} is not a writeable directory")
+
+
+def ReadableDirType(path: str) -> pathlib.Path:
+    try:
+        try_path = pathlib.Path(path)
+        if not try_path.is_dir():
+            raise argparse.ArgumentTypeError(f"ReadableDirType: {try_path} is not a valid path")
+        if not os.access(try_path, os.R_OK):
+            raise argparse.ArgumentTypeError(f"ReadableDirType: {try_path} is not a readable directory")
+    except TypeError as e:
+        raise argparse.ArgumentTypeError(f"ReadableDirType: {path} is not a string") from e
+
+
+
+def WriteableDirType(path: str) -> pathlib.Path:
+    try:
+        try_path = pathlib.Path(path)
+        if not try_path.is_dir():
+            raise argparse.ArgumentTypeError(f"WriteableDirType: {try_path} is not a valid path")
+        if not os.access(try_path, os.W_OK):
+            raise argparse.ArgumentTypeError(f"WriteableDirType: {try_path} is not a writeable directory")
+    except TypeError as e:
+        raise argparse.ArgumentTypeError(f"WriteableDirType: {path} is not a string") from e
