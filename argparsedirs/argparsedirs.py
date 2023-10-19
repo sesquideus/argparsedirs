@@ -30,6 +30,7 @@ def ReadableDirType(path: str) -> pathlib.Path:
             raise argparse.ArgumentTypeError(f"ReadableDirType: {try_path} is not a valid path")
         if not os.access(try_path, os.R_OK):
             raise argparse.ArgumentTypeError(f"ReadableDirType: {try_path} is not a readable directory")
+        return True
     except TypeError as e:
         raise argparse.ArgumentTypeError(f"ReadableDirType: {path} is not a string") from e
 
@@ -42,5 +43,6 @@ def WriteableDirType(path: str) -> pathlib.Path:
             raise argparse.ArgumentTypeError(f"WriteableDirType: {try_path} is not a valid path")
         if not os.access(try_path, os.W_OK):
             raise argparse.ArgumentTypeError(f"WriteableDirType: {try_path} is not a writeable directory")
+        return True
     except TypeError as e:
         raise argparse.ArgumentTypeError(f"WriteableDirType: {path} is not a string") from e
