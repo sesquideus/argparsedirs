@@ -13,7 +13,7 @@ Just import and use as an action:
 
     argparser = argparse.ArgumentParser()
 
-    argparser.add_argument('indir', action=argparsedirs.ReadableDir)
-    argparser.add_argument('outdir', action=argparsedirs.WriteableDir)
+    argparser.add_argument('indir', type=argparsedirs.ReadableDirType)
+    argparser.add_argument('outdir', type=argparsedirs.WriteableDirType)
 
     args = argparser.parse_args()
